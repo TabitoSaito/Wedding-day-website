@@ -2,6 +2,7 @@ blinker==1.9.0
 Bootstrap-Flask==2.5.0
 click==8.2.1
 dominate==2.9.1
+dotenv==0.9.9
 Flask==3.1.1
 Flask-Bootstrap==3.3.7.1
 flask-bootstrap5==0.1.dev1
@@ -15,6 +16,7 @@ Jinja2==3.1.6
 MarkupSafe==3.0.2
 packaging==25.0
 pillow==11.3.0
+python-dotenv==1.2.1
 SQLAlchemy==2.0.42
 typing_extensions==4.14.1
 visitor==0.1.3

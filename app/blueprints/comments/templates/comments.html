@@ -2,6 +2,10 @@
 {% block title %} Glückwünsche {% endblock %}
 {% block head %}
 {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('comments.static', filename='style.css') }}"
+/>
 {% endblock %}
 
 {% block content %}
@@ -13,7 +17,7 @@
     <div class="card mb-4 comment">
         <div class="card-body">
             <div class="d-flex align-items-center mb-3">
-                <img src="static/assets/img/profile_icons/{{ comment.author.profile_pic }}.png" alt="Avatar" class="rounded-circle me-3 profile-img">
+                <img src="{{ url_for('static', filename=f'assets/img/profile_icons/{comment.author.profile_pic}.png') }}" alt="Avatar" class="rounded-circle me-3 profile-img">
                 <div>
                     <h5 class="mb-0">{{ comment.author.name }}</h5>
                     <small class="text-muted">geschrieben am {{ comment.created_on }}</small>
@@ -23,7 +27,7 @@
                 {{ comment.content }}
             </p>
             {% if current_user.id == comment.author.id %}
-            <a class="delete-button" href="{{ url_for('delete_comment', comment_id=comment.id) }}">❌</a>
+            <a class="delete-button" href="{{ url_for('comments.delete_comment', comment_id=comment.id) }}">❌</a>
             {% endif %}
         </div>
     </div>

@@ -2,6 +2,10 @@
 {% block title %} Zeitlinie {% endblock %}
 {% block head %}
 {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('main.static', filename='style.css') }}"
+/>
 {% endblock %}
 
 {% block content %}

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;700&display=swap"
           rel="stylesheet">
     <link  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 
@@ -33,19 +33,19 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link {% if cur_page == 'home' %}active{% endif %}"
-                       href="{{ url_for('home') }}">Home</a>
+                       href="{{ url_for('main.home') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if cur_page == 'timeline' %}active{% endif %}"
-                       href="{{ url_for('timeline') }}">Zeitlinie</a>
+                       href="{{ url_for('main.timeline') }}">Zeitlinie</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if cur_page == 'comments' %}active{% endif %}"
-                       href="{{ url_for('comments') }}">Glückwünsche</a>
+                       href="{{ url_for('comments.comments') }}">Glückwünsche</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if cur_page == 'biography' %}active{% endif %}"
-                       href="{{ url_for('biography') }}">Biografien</a>
+                       href="{{ url_for('main.biography') }}">Biografien</a>
                 </li>
             </ul>
 
@@ -53,25 +53,25 @@
                 {% if current_user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link"
-                       href="{{ url_for('logout') }}">Abmelden</a>
+                       href="{{ url_for('auth.logout') }}">Abmelden</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link {% if cur_page == 'login' %}active{% endif %}"
-                       href="{{ url_for('login') }}">Anmelden</a>
+                       href="{{ url_for('auth.login') }}">Anmelden</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if cur_page == 'register' %}active{% endif %}"
-                       href="{{ url_for('register') }}">Registrieren</a>
+                       href="{{ url_for('auth.register') }}">Registrieren</a>
                 </li>
                 {% endif %}
                 <li class="nav-item">
                     <a class="nav-link {% if cur_page == 'write_comment' %}active{% endif %}"
-                       href="{{ url_for('write_comment') }}">Glückwunsch schreiben</a>
+                       href="{{ url_for('comments.write') }}">Glückwunsch schreiben</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if cur_page == 'img_select' %}active{% endif %}"
-                       href="{{ url_for('img_selection') }}">Profilebild ändern</a>
+                       href="{{ url_for('main.img_selection') }}">Profilebild ändern</a>
                 </li>
             </ul>
         </div>
