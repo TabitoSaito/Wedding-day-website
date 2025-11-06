@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="container img-container">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col">
+            <a href="javascript:updateImg(1)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau1.png" id="img1" class="" alt="frau1">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(2)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau2.png" id="img2" class="" alt="frau2">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(3)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau3.png" id="img3" class="" alt="frau3">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(4)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau4.png" id="img4" class="" alt="frau4">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(5)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau5.png" id="img5" class="" alt="frau5">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(6)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau6.png" id="img6" class="" alt="frau6">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(7)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau7.png" id="img7" class="" alt="frau7">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(8)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau8.png" id="img8" class="" alt="frau8">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(9)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau9.png" id="img9" class="" alt="frau9">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(10)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/frau10.png" id="img10" class="" alt="frau10">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(11)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann1.png" id="img11" class="" alt="mann1">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(12)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann2.png" id="img12" class="" alt="mann2">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(13)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann3.png" id="img13" class="" alt="mann3">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(14)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann4.png" id="img14" class="" alt="mann4">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(15)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann5.png" id="img15" class="" alt="mann5">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(16)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann6.png" id="img16" class="" alt="mann6">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(17)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann7.png" id="img17" class="" alt="mann7">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(18)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann8.png" id="img18" class="" alt="mann8">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(19)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann9.png" id="img19" class="" alt="mann9">
+                </div>
+            </a>
+        </div>
+        <div class="col">
+            <a href="javascript:updateImg(29)">
+                <div class="card">
+                    <img src="static/assets/img/profile_icons/mann10.png" id="img20" class="" alt="mann10">
+                </div>
+            </a>
+        </div>
+
+
+    </div>
+    <a class="btn btn-primary" id="finish" href="#" role="button">Übernehmen</a>
+</div>
+
+<script>
+function updateImg(n) {
+    var images = document.getElementsByTagName('img');
+    for(var i=0; i<images.length; i++)
+        {
+         images[i].className = '';
+         document.getElementById('img' + (i + 1)).className = '';
+        }
+    document.getElementById('img' + n).className = 'active-select';
+    var pic = document.getElementById('img' + n).alt
+    document.getElementById('finish').href =  '/change-profile/' + pic ;
+}
+</script>
+{% endblock %}

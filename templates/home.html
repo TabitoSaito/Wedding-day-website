@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="center-container">
+
+<div class="container d-flex align-items-center justify-content-center">
+    <p id="counter" class="counter-text"></p>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center gy-3">
+    <!-- Tage -->
+    <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
+      <div class="card countdown-text">
+        <div class="card-body
+                    d-flex flex-column
+                    justify-content-center align-items-center
+                    text-center"
+             >
+          <div id="countdown-days">00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
+      <div class="card countdown-text">
+        <div class="card-body
+                    d-flex flex-column
+                    justify-content-center align-items-center
+                    text-center"
+             >
+          <div id="countdown-hours">00</div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
+      <div class="card countdown-text">
+        <div class="card-body
+                    d-flex flex-column
+                    justify-content-center align-items-center
+                    text-center"
+             >
+          <div id="countdown-minutes">00</div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3 col-lg-2 d-flex justify-content-center">
+      <div class="card countdown-text">
+        <div class="card-body
+                    d-flex flex-column
+                    justify-content-center align-items-center
+                    text-center"
+             >
+          <div id="countdown-seconds">00</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+    function updateCountdown() {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      let targetDate = new Date(currentYear, 7, 19, 0, 0, 0);
+
+      if (now > targetDate) {
+        targetDate = new Date(currentYear + 1, 7, 19, 0, 0, 0);
+      }
+
+      const counter = targetDate.getFullYear() - 2000
+
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown-days").innerHTML =
+        `${days} Tage`;
+
+      document.getElementById("countdown-hours").innerHTML =
+        `${hours} Stunden`;
+
+      document.getElementById("countdown-minutes").innerHTML =
+        `${minutes} Minuten`;
+
+      document.getElementById("countdown-seconds").innerHTML =
+        `${seconds} Sekunden`;
+
+      document.getElementById("counter").innerHTML =
+        `Zeit bis zum ${counter}.Hochzeitstag`;
+
+      setTimeout(updateCountdown, 1000);
+    }
+
+
+    updateCountdown();
+</script>
+</div>
+{% endblock %}
