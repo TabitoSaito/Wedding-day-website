@@ -20,7 +20,7 @@
 /* Timeline */
 
 .overflow-container {
-  overflow: scroll;
+  overflow: auto;
 }
 
 .timeline-container {

@@ -25,7 +25,7 @@ def login():
             return redirect(url_for('auth.login'))
         else:
             login_user(user)
-            return redirect(url_for('content.home'))
+            return redirect(url_for('main.home'))
 
     return render_template("login.html", form=form, current_user=current_user, cur_page="login")
 
@@ -73,4 +73,4 @@ def register():
 @auth_bp.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('main.home'))

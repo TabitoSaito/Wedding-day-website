@@ -27,7 +27,7 @@ def write():
 
             db.session.add(new_comment)
             db.session.commit()
-            return redirect(url_for("comments"))
+            return redirect(url_for("comments.comments"))
 
         return render_template("write_comment.html", current_user=current_user, cur_page="write_comment", form=form)
     else:
