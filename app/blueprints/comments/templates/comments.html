@@ -1,39 +1,44 @@
-{% extends "base.html" %}
-{% block title %} Glückwünsche {% endblock %}
-{% block head %}
-{{ super() }}
+<!-- load base.html and change title -->
+{% extends "base.html" %} {% block title %} Glückwünsche {% endblock %} {% block
+head %} {{ super() }}
 <link
   rel="stylesheet"
   href="{{ url_for('comments.static', filename='style.css') }}"
 />
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 
 <div class="container py-4 space-top">
+  <!-- load all comments -->
+  {% for comment in comments %}
 
-    {% for comment in comments %}
-
-    <div class="card mb-4 comment">
-        <div class="card-body">
-            <div class="d-flex align-items-center mb-3">
-                <img src="{{ url_for('static', filename='assets/img/profile_icons/' ~ comment.author.profile_pic ~ '.png') }}" alt="Avatar" class="rounded-circle me-3 profile-img">
-                <div>
-                    <h5 class="mb-0">{{ comment.author.name }}</h5>
-                    <small class="text-muted">geschrieben am {{ comment.created_on }}</small>
-                </div>
-            </div>
-            <p class="mb-0 comment-text">
-                {{ comment.content }}
-            </p>
-            {% if current_user.id == comment.author.id %}
-            <a class="delete-button" href="{{ url_for('comments.delete_comment', comment_id=comment.id) }}">❌</a>
-            {% endif %}
+  <div class="card mb-4 comment">
+    <div class="card-body">
+      <div class="d-flex align-items-center mb-3">
+        <img
+          src="{{ url_for('static', filename='assets/img/profile_icons/' ~ comment.author.profile_pic ~ '.png') }}"
+          alt="Avatar"
+          class="rounded-circle me-3 profile-img"
+        />
+        <div>
+          <h5 class="mb-0">{{ comment.author.name }}</h5>
+          <small class="text-muted"
+            >geschrieben am {{ comment.created_on }}</small
+          >
         </div>
+      </div>
+      <p class="mb-0 comment-text">{{ comment.content }}</p>
+      <!-- add delete button if current user is author of comment -->
+      {% if current_user.id == comment.author.id %}
+      <a
+        class="delete-button"
+        href="{{ url_for('comments.delete_comment', comment_id=comment.id) }}"
+        >❌</a
+      >
+      {% endif %}
     </div>
+  </div>
 
-    {% endfor %}
-
+  {% endfor %}
 </div>
 
 {% endblock %}

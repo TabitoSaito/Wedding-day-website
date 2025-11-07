@@ -1,61 +1,69 @@
-{% extends "base.html" %}
-{% block title %} Zeitlinie {% endblock %}
-{% block head %}
-{{ super() }}
+<!-- load base.html and change title -->
+{% extends "base.html" %} {% block title %} Zeitlinie {% endblock %} {% block
+head %} {{ super() }}
 <link
   rel="stylesheet"
   href="{{ url_for('main.static', filename='style.css') }}"
 />
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 
 <div class="overflow-container">
-    <div class="timeline-container">
-        <div class="timeline-line"></div>
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
 
-        {% for event in events %}
-        {% if (event['id'] % 2) == 0 %}
-        <a href="#{{ event['id'] }}">
-            <div class="timeline-event event-top" style="left: {{ event['rel_pos'] }}%;">
-                <div class="line" style="left: {{ event['rel_pos'] }}%;"></div>
-                <p class="date">{{ event["date"] }}</p>
-                <p>{{ event["event"] }}</p>
-            </div>
-        </a>
-        {% else %}
-        <a href="#{{ event['id'] }}">
-            <div class="timeline-event event-bottom" style="left: {{ event['rel_pos'] }}%;">
-                <p class="date">{{ event["date"] }}</p>
-                <p>{{ event["event"] }}</p>
-                <div class="line" style="left: {{ event['rel_pos'] }}%;"></div>
-            </div>
-        </a>
-        {% endif %}
-        {% endfor %}
-    </div>
+    <!-- load events on timeline. Alternate between above and below the timeline -->
+    {% for event in events %} {% if (event['id'] % 2) == 0 %}
+    <a href="#{{ event['id'] }}">
+      <div
+        class="timeline-event event-top"
+        style="left: {{ event['rel_pos'] }}%;"
+      >
+        <div class="line" style="left: {{ event['rel_pos'] }}%;"></div>
+        <p class="date">{{ event["date"] }}</p>
+        <p>{{ event["event"] }}</p>
+      </div>
+    </a>
+    {% else %}
+    <a href="#{{ event['id'] }}">
+      <div
+        class="timeline-event event-bottom"
+        style="left: {{ event['rel_pos'] }}%;"
+      >
+        <p class="date">{{ event["date"] }}</p>
+        <p>{{ event["event"] }}</p>
+        <div class="line" style="left: {{ event['rel_pos'] }}%;"></div>
+      </div>
+    </a>
+    {% endif %} {% endfor %}
+  </div>
 </div>
 
-
 <div class="container py-4">
-    {% for event in events[:-1] %}
-    <div class="card mb-4" id="{{ event['id'] }}">
-        <div class="card-body">
-            <div class="row g-0">
-                <div class="col-12 col-md-8 pe-md-4">
-                    <h2 class="h5 border-bottom pb-2 mb-3">{{ event["date"] }} {{ event["event"] }}</h2>
-                    <p class="mb-0 event-text">
-                        {{ event["text"] }}
-                    </p>
-                </div>
-                <div class="col-12 col-md-4 d-flex justify-content-center justify-content-md-end align-items-start mt-3 mt-md-0">
-                    <img src="{{ event['img'] }}" alt="Event Bild"
-                         class="img-fluid rounded" style="max-height: 200px;">
-                </div>
-            </div>
+    <!-- create event card for every event -->
+  {% for event in events[:-1] %}
+  <div class="card mb-4" id="{{ event['id'] }}">
+    <div class="card-body">
+      <div class="row g-0">
+        <div class="col-12 col-md-8 pe-md-4">
+          <h2 class="h5 border-bottom pb-2 mb-3">
+            {{ event["date"] }} {{ event["event"] }}
+          </h2>
+          <p class="mb-0 event-text">{{ event["text"] }}</p>
         </div>
+        <div
+          class="col-12 col-md-4 d-flex justify-content-center justify-content-md-end align-items-start mt-3 mt-md-0"
+        >
+          <img
+            src="{{ event['img'] }}"
+            alt="Event Bild"
+            class="img-fluid rounded"
+            style="max-height: 200px"
+          />
+        </div>
+      </div>
     </div>
-    {% endfor %}
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock %}

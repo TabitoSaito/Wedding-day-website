@@ -1,88 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-<head>
+  <head>
     {% block head %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-    {% block styles %}
-    {{ bootstrap.load_css() }}
-    {% endblock %}
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;700&display=swap"
-          rel="stylesheet">
-    <link  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    {% block styles %} {{ bootstrap.load_css() }} {% endblock %}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
 
     <title>Hochzeitstag</title>
-    <link rel="icon" type="image/x-icon" href="static/assets/img/hochzeit-icon.png">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='assets/img/hochzeit-icon.png') }}"
+    />
     {% endblock %}
-</head>
-<body>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav" aria-controls="navbarNav"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link {% if cur_page == 'home' %}active{% endif %}"
-                       href="{{ url_for('main.home') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if cur_page == 'timeline' %}active{% endif %}"
-                       href="{{ url_for('main.timeline') }}">Zeitlinie</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if cur_page == 'comments' %}active{% endif %}"
-                       href="{{ url_for('comments.comments') }}">Glückwünsche</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if cur_page == 'biography' %}active{% endif %}"
-                       href="{{ url_for('main.biography') }}">Biografien</a>
-                </li>
-            </ul>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link {% if cur_page == 'home' %}active{% endif %}"
+                href="{{ url_for('main.home') }}"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if cur_page == 'timeline' %}active{% endif %}"
+                href="{{ url_for('main.timeline') }}"
+                >Zeitlinie</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if cur_page == 'comments' %}active{% endif %}"
+                href="{{ url_for('comments.comments') }}"
+                >Glückwünsche</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if cur_page == 'biography' %}active{% endif %}"
+                href="{{ url_for('main.biography') }}"
+                >Biografien</a
+              >
+            </li>
+          </ul>
 
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                {% if current_user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link"
-                       href="{{ url_for('auth.logout') }}">Abmelden</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link {% if cur_page == 'login' %}active{% endif %}"
-                       href="{{ url_for('auth.login') }}">Anmelden</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if cur_page == 'register' %}active{% endif %}"
-                       href="{{ url_for('auth.register') }}">Registrieren</a>
-                </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link {% if cur_page == 'write_comment' %}active{% endif %}"
-                       href="{{ url_for('comments.write') }}">Glückwunsch schreiben</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if cur_page == 'img_select' %}active{% endif %}"
-                       href="{{ url_for('main.img_selection') }}">Profilebild ändern</a>
-                </li>
-            </ul>
+          <!-- load navbar items based on user authentication -->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {% if current_user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}"
+                >Abmelden</a
+              >
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a
+                class="nav-link {% if cur_page == 'login' %}active{% endif %}"
+                href="{{ url_for('auth.login') }}"
+                >Anmelden</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if cur_page == 'register' %}active{% endif %}"
+                href="{{ url_for('auth.register') }}"
+                >Registrieren</a
+              >
+            </li>
+            {% endif %}
+
+            <!-- always load this -->
+            <li class="nav-item">
+              <a
+                class="nav-link {% if cur_page == 'write_comment' %}active{% endif %}"
+                href="{{ url_for('comments.write') }}"
+                >Glückwunsch schreiben</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link {% if cur_page == 'img_select' %}active{% endif %}"
+                href="{{ url_for('main.img_selection') }}"
+                >Profilebild ändern</a
+              >
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
 
-    </div>
-</nav>
-
-{% block content %}{% endblock %}
-
-{% block scripts %}
-{{ bootstrap.load_js() }}
-{% endblock %}
-</body>
+    {% block content %}{% endblock %} {% block scripts %} {{ bootstrap.load_js()
+    }} {% endblock %}
+  </body>
 </html>

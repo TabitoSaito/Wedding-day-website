@@ -1,64 +1,78 @@
-{% extends "base.html" %}
-{% block title %} Biografien {% endblock %}
-{% block head %}
-{{ super() }}
+<!-- load base.html and change title -->
+{% extends "base.html" %} {% block title %} Biografien {% endblock %} {% block
+head %} {{ super() }}
 <link
   rel="stylesheet"
   href="{{ url_for('main.static', filename='style.css') }}"
 />
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 
 <div class="row justify-content-center cards-boarder">
-    <div class="col-md-4 col-sm-6 col-12">
-        <div class="card w-auto card-small">
-            <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg" alt="Avatar">
-            <div class="card-body">
-                <h5 class="card-title">Max Mustermann</h5>
-                <p class="card-text">
-                    <strong>Alter:</strong> 50<br>
-                    <strong>Geburtstag:</strong> 15.05.1984<br>
-                    <strong>Geburtsort:</strong> Musterstadt<br>
-                    <strong>Geschwister:</strong> Mozart, Luther<br>
-                    <strong>Schule:</strong> Volkschule Musterstadt ➔ Hauptschule Musterstadt ➔ HAK Musterstadt<br>
-                    <strong>Berufserfahrungen:</strong> Bundesheer (6+2 Monate), seit 2000 Techniker bei „Elektro Muster GmbH“<br>
-                    <strong>Hobbys:</strong> Radfahren, Kochen, Lesen, Reisen<br>
-                    <strong>Interessen:</strong> Nachhaltigkeit, Technik, Musik<br><br>
-                    <strong>Was ich an Lisa mag:</strong>
-                    <ul>
-                        <li>Good point 1</li>
-                        <li>Good point 2</li>
-                        <li>Good point 3</li>
-                        <li>Good point 4</li>
-                    </ul>
-            </div>
-        </div>
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="card w-auto card-small">
+      <img
+        src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg"
+        alt="Avatar"
+      />
+      <div class="card-body">
+        <!-- edit data to fit person -->
+        <h5 class="card-title">Max Mustermann</h5>
+        <p class="card-text">
+          <strong>Alter:</strong> 50<br />
+          <strong>Geburtstag:</strong> 15.05.1984<br />
+          <strong>Geburtsort:</strong> Musterstadt<br />
+          <strong>Geschwister:</strong> Mozart, Luther<br />
+          <strong>Schule:</strong> Volkschule Musterstadt ➔ Hauptschule
+          Musterstadt ➔ HAK Musterstadt<br />
+          <strong>Berufserfahrungen:</strong> Bundesheer (6+2 Monate), seit 2000
+          Techniker bei „Elektro Muster GmbH“<br />
+          <strong>Hobbys:</strong> Radfahren, Kochen, Lesen, Reisen<br />
+          <strong>Interessen:</strong> Nachhaltigkeit, Technik, Musik<br /><br />
+          <strong>Was ich an Lisa mag:</strong>
+        </p>
+
+        <ul>
+          <li>Good point 1</li>
+          <li>Good point 2</li>
+          <li>Good point 3</li>
+          <li>Good point 4</li>
+        </ul>
+      </div>
     </div>
-    <div class="col-md-4 col-sm-6 col-12">
-        <div class="card w-auto card-small">
-            <img src="https://img.freepik.com/free-photo/young-woman-blue-sweater-autumn-park_1303-11368.jpg?semt=ais_hybrid&w=740&q=80" class="card-img-top" alt="Avatar">
-            <div class="card-body">
-                <h5 class="card-title">Lisa Mustermann</h5>
-                <p class="card-text">
-                    <strong>Alter:</strong> 50<br>
-                    <strong>Geburtstag:</strong> 15.05.1984<br>
-                    <strong>Geburtsort:</strong> Musterdorf<br>
-                    <strong>Geschwister:</strong> Beethoven, Einstein<br>
-                    <strong>Schule:</strong> Volkschule Musterdorf ➔ Hauptschule Musterdorf ➔ HAK Musterdorf<br>
-                    <strong>Berufserfahrungen:</strong> 1 Jahr Freiwilligendienst, Lehrerin an der Hauptschule Musterdorf<br>
-                    <strong>Hobbys:</strong> Gärtnern, Malen, Yoga, Reisen<br>
-                    <strong>Interessen:</strong> Bildung, Kultur, Natur<br><br>
-                    <strong>Was ich an Max mag:</strong>
-                    <ul>
-                        <li>Good point 1</li>
-                        <li>Good point 2</li>
-                        <li>Good point 3</li>
-                        <li>Good point 4</li>
-                    </ul>
-            </div>
-        </div>
+  </div>
+  <div class="col-md-4 col-sm-6 col-12">
+    <div class="card w-auto card-small">
+      <img
+        src="https://img.freepik.com/free-photo/young-woman-blue-sweater-autumn-park_1303-11368.jpg?semt=ais_hybrid&w=740&q=80"
+        class="card-img-top"
+        alt="Avatar"
+      />
+      <div class="card-body">
+        <!-- edit data to fit person -->
+        <h5 class="card-title">Lisa Mustermann</h5>
+        <p class="card-text">
+          <strong>Alter:</strong> 50<br />
+          <strong>Geburtstag:</strong> 15.05.1984<br />
+          <strong>Geburtsort:</strong> Musterdorf<br />
+          <strong>Geschwister:</strong> Beethoven, Einstein<br />
+          <strong>Schule:</strong> Volkschule Musterdorf ➔ Hauptschule
+          Musterdorf ➔ HAK Musterdorf<br />
+          <strong>Berufserfahrungen:</strong> 1 Jahr Freiwilligendienst,
+          Lehrerin an der Hauptschule Musterdorf<br />
+          <strong>Hobbys:</strong> Gärtnern, Malen, Yoga, Reisen<br />
+          <strong>Interessen:</strong> Bildung, Kultur, Natur<br /><br />
+          <strong>Was ich an Max mag:</strong>
+        </p>
+
+        <ul>
+          <li>Good point 1</li>
+          <li>Good point 2</li>
+          <li>Good point 3</li>
+          <li>Good point 4</li>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>
 
 {% endblock %}

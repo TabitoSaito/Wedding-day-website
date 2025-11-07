@@ -1,23 +1,20 @@
-{% extends "base.html" %}
-{% block title %} Glückwünsche {% endblock %}
-{% block head %}
-{{ super() }}
+<!-- load base.html and change title -->
+{% extends "base.html" %} {% block title %} Glückwünsche {% endblock %} {% block
+head %} {{ super() }}
 <link
   rel="stylesheet"
   href="{{ url_for('comments.static', filename='style.css') }}"
 />
-{% endblock %}
-
-{% from "bootstrap5/form.html" import render_form %}
-
-{% block content %}
+{% endblock %} {% from "bootstrap5/form.html" import render_form %} {% block
+content %}
 
 <div class="container">
-    <div class="row justify-content-center text-center space-top-comment">
-        <div class="col-5 text-center">
-            {{render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
-        </div>
+  <div class="row justify-content-center text-center space-top-comment">
+    <div class="col-5 text-center">
+      <!-- render form to write new comment -->
+      {{render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
     </div>
+  </div>
 </div>
 
 {% endblock %}
