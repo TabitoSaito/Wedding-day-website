@@ -10,10 +10,14 @@ from . import main_bp
 
 @main_bp.route("/")
 def home():
+    """load homepage
+    """
     return render_template("home.html", current_user=current_user, cur_page="home")
 
 @main_bp.route("/timeline")
 def timeline():
+    """load 'events.json' and render timeline and event cards for events. Requires to be logged in
+    """
     if current_user.is_authenticated:
         with open(os.path.join(current_app.static_folder, "data", "events.json"), "r") as file:
             events = json.load(file)
@@ -26,6 +30,8 @@ def timeline():
     
 @main_bp.route("/biography")
 def biography():
+    """load biography page. Requires to be logged in
+    """
     if current_user.is_authenticated:
         return render_template("biography.html", current_user=current_user, cur_page="biography")
     else:
@@ -34,6 +40,8 @@ def biography():
     
 @main_bp.route("/img-selection")
 def img_selection():
+    """load image selection page to change profile picture. Requires to be logged in
+    """
     if current_user.is_authenticated:
         return render_template("img_selection.html")
     else:
@@ -42,6 +50,11 @@ def img_selection():
 
 @main_bp.route("/change-profile/<img>")
 def change_profile(img):
+    """change profile picture and save changes in database. Redirects to homepage. Requires to be logged in
+
+    Args:
+        img (_type_): image name to change to
+    """
     if current_user.is_authenticated:
         user = db.get_or_404(User, current_user.id)
         user.profile_pic = img

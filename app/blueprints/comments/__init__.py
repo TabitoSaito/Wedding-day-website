@@ -1,4 +1,9 @@
 from flask import Blueprint
+"""
+Blueprint: comments
+
+contains routes for comments/congratulations e.g. route to show all comments
+"""
 
 comment_bp = Blueprint(
     'comments',

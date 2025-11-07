@@ -1,4 +1,9 @@
 from flask import Blueprint
+"""
+Blueprint: main
+
+contains routes for main content e.g. home, timeline
+"""
 
 main_bp = Blueprint(
     'main',

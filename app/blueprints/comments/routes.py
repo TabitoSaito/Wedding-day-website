@@ -9,6 +9,8 @@ from . import comment_bp
 
 @comment_bp.route("/")
 def comments():
+    """Fetch all comments from database and load on page
+    """
     result = db.session.execute(db.select(Comment))
     comments = result.scalars().all()
 
@@ -16,8 +18,14 @@ def comments():
 
 @comment_bp.route("/write", methods=["GET", "POST"])
 def write():
+    """load form to write a new comment and add to database. Requires to be logged in
+
+    - GET: render form
+    - POST: add comment to database and redirect to comments page
+    """
     if current_user.is_authenticated:
         form = CommentForm()
+        # validate form and add comment to database
         if request.method == "POST" and form.validate:
             new_comment = Comment(
                 created_on=datetime.date.today().strftime("%d. %B %Y"),
@@ -36,6 +44,11 @@ def write():
     
 @comment_bp.route("/delete/<comment_id>")
 def delete_comment(comment_id):
+    """delete comment from database by id
+
+    Args:
+        comment_id (_type_): id of comment to delete
+    """
     comment_to_delete = db.get_or_404(Comment, comment_id)
     db.session.delete(comment_to_delete)
     db.session.commit()

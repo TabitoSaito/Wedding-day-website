@@ -1,4 +1,9 @@
 from flask import Blueprint
+"""
+Blueprint: auth
+
+contains routes for authentication e.g. login
+"""
 
 auth_bp = Blueprint(
     'auth',

@@ -12,17 +12,25 @@ from . import auth_bp
 
 @auth_bp.route("/login", methods=["GET", "POST"])
 def login():
+    """Load login form and process login logic
+
+    - GET: render login form
+    - POST: handel login logic and redirect to homepage
+    """
     form = LoginForm()
     if form.validate_on_submit():
         password = form.password.data
         result = db.session.execute(db.select(User).where(User.email == form.email.data))
         user = result.scalar()
+        # check if user is registered
         if not user:
             flash("That email does not exist, please try again.")
             return redirect(url_for('auth.login'))
+        # check for correct password
         elif not check_password_hash(user.password, password):
             flash('Password incorrect, please try again.')
             return redirect(url_for('auth.login'))
+        # redirect to homepage after successful login
         else:
             login_user(user)
             return redirect(url_for('main.home'))
@@ -31,21 +39,30 @@ def login():
 
 @auth_bp.route("/register", methods=["GET", "POST"])
 def register():
+    """load register form and process register logic
+
+    - GET: render register form
+    - POST: handel register logic and redirect to homepage
+    """
     form = RegisterForm()
     if form.validate_on_submit():
 
         result = db.session.execute(db.select(User).where(User.email == form.email.data))
         user = result.scalar()
+        # check if user already registered
         if user:
             flash("Du hast schon ein Konto! Melde dich an")
             return redirect(url_for('login'))
 
+        # check security key
         if form.secret_key.data != current_app.config["SECRET_KEY_REGISTER"]:
             flash("Falscher Geheimcode")
             return redirect(url_for("register"))
+        # check password repeat to avoid typo mistakes
         elif form.password_again.data != form.password.data:
             flash("Passwörter stimmen nicht überein")
             return redirect(url_for("register"))
+        # hash password and add user to database
         else:
             hash_and_salted_password = generate_password_hash(
                 form.password.data,
@@ -72,5 +89,7 @@ def register():
 
 @auth_bp.route('/logout')
 def logout():
+    """logout current user and redirect to homepage
+    """
     logout_user()
     return redirect(url_for('main.home'))
