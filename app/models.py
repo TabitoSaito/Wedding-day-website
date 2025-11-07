@@ -5,6 +5,8 @@ from flask_login import UserMixin
 
 
 class Comment(db.Model):
+    """table containing comments. Every comment is linked to one User
+    """
     __tablename__ = "comment"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
 
@@ -16,6 +18,8 @@ class Comment(db.Model):
 
 
 class User(UserMixin, db.Model):
+    """table containing users. Every user can be linked to multiple comments
+    """
     __tablename__ = "users"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
