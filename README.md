@@ -45,8 +45,6 @@ This is a simple website I created to commemorate my parents 25. Wedding anniver
 - **Bootstrap5**, **Jinja2**
 - **Werkzeug**
 
-## Projectstructure
-
 ## Installation
 
 ### Clone Repository
