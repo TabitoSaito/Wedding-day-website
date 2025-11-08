@@ -1,5 +1,5 @@
 # Wedding-day-website
-This is a simple website I created to commemorate my parents 25. Wedding anniversary. It is supposed to show a bit of their life. The website enabels friends and relatives to concratulate them with nice comments.
+This is a simple website I created to commemorate my parents 25. Wedding anniversary. It is supposed to show a bit of their life. The website enables friends and relatives to congratulate them with nice comments.
 
 ## Table of Contents
 - [Features](#features)
@@ -11,11 +11,11 @@ This is a simple website I created to commemorate my parents 25. Wedding anniver
 ## Features
 - Homepage with countdown until the next wedding anniversary
 - Timeline with important life events
-- comment page to concratulate the married couple
+- comment page to congratulate the married couple
 - biography of both spouses
 - registration and login system with a secret key to protect personal information
 - 20 profile pictures to choose from
-- responsive design for destop and mobil
+- responsive design for desktop and mobil
 
 ## Preview
 ### Homepage
@@ -30,7 +30,7 @@ This is a simple website I created to commemorate my parents 25. Wedding anniver
 ![Register](readme_assets/register.png)
 ### Login
 ![Login](readme_assets/login.png)
-### Profileimage Selection
+### Profilimage Selection
 ![Image Selection](readme_assets/img_selection.png)
 ### Responsive Timeline
 ![Responsive Timeline](readme_assets/responsive-timeline.gif)
@@ -52,12 +52,12 @@ git clone git@github.com:TabitoSaito/Wedding-day-website.git
 cd Wedding-day-website
 ```
 
-### Set Virtual Enviroment
+### Set Virtual Environment
 ```bash
 python -m venv venv
-source venv/bin/activate # (Windos: venv\Scripts\activate)
+source venv/bin/activate # (Windows: venv\Scripts\activate)
 ```
-### Install Requiremantes
+### Install Requirements
 ```bash
 pip install -r requirements.txt
 ```
