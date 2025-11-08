@@ -5,7 +5,6 @@ This is a simple website I created to commemorate my parents 25. Wedding anniver
 - [Features](#features)
 - [Preview](#preview)
 - [Technologies](#technologies)
-- [Projectstructure](#projectstructure)
 - [Installation](#installation)
 - [Author](#author)
 
